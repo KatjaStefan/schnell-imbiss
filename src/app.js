@@ -24,15 +24,11 @@ const localisePrice = (price, locale) => {
    */
   console.log('price', price, 'locale', locale);
   if (locale === 'de') {
-    price.toFixed(2).replace('.', ',') + ' €';
+    price = price.toFixed(2).replace('.', ',') + ' €';
   } else if (locale === 'en-GB') {
-    price = '€' + price.toFixed(2).replace(',', '.');
-    console.log(price);
-  } else {
-    
-  }
-
-
+    price = '€' + price.toFixed(2);
+    // console.log(price);
+  } 
   return price;
 };
 
@@ -49,10 +45,11 @@ const getMenuItemNames = (limit = null) => {
   /*
    * Can you implement a limit here? I bet you can...
    */
-  let newNames = [allNames[0], allNames[1]];
-  console.log(newNames);
-
-  return newNames;
+  if (limit === null) {
+    return allNames;
+  } else {
+    return allNames.slice(0, limit);
+  }
 };
 
 /**
@@ -64,7 +61,9 @@ const getMenuItemNames = (limit = null) => {
 const getMenuItemPrices = (menuItemNames, locale) => {
   const supportedLocales = ['de', 'en-GB'];
   // Write a "guard clause" here to throw an error if the supportedLocales do not include the given locale
-
+  if (!supportedLocales.includes(locale)) {
+    throw new Error(`Locale ${locale} not supported!`);
+  }
   // Select all menu items that have the provided names
   const items = getItemsForNames(menuItemNames);
   console.log('items:', items);
