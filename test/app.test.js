@@ -3,7 +3,7 @@ const { getMenuItemNames, getMenuItemPrices, getPizzaToppings, placeOrder } = re
 describe('App', () => {
   describe('getMenuItemNames', () => {
     it('returns names of all menu items', () => {
-      const expectedNames = ['Döner Kebab', 'Currywurst & Pommes', 'Pizza', 'Falafel im Brot'];
+      const expectedNames = ['Döner Kebab', 'Currywurst & Pommes', 'Pizza', 'Falafel im Brot', 'Leckeres Eis'];
       const results = getMenuItemNames();
 
       expect(results).toEqual(expectedNames);
@@ -26,7 +26,7 @@ describe('App', () => {
       expect(results).toEqual(expectedPrices);
     });
 
-    it('returns localised prices of menu items in british english', () => {
+    it.only('returns localised prices of menu items in british english', () => {
       const menuItemNames = ['Döner Kebab', 'Falafel im Brot'];
       const expectedPrices = ['€3.00', '€3.50'];
       const results = getMenuItemPrices(menuItemNames, 'en-GB');
