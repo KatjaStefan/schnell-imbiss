@@ -26,7 +26,7 @@ describe('App', () => {
       expect(results).toEqual(expectedPrices);
     });
 
-    it.only('returns localised prices of menu items in british english', () => {
+    it('returns localised prices of menu items in british english', () => {
       const menuItemNames = ['Döner Kebab', 'Falafel im Brot'];
       const expectedPrices = ['€3.00', '€3.50'];
       const results = getMenuItemPrices(menuItemNames, 'en-GB');
@@ -34,7 +34,7 @@ describe('App', () => {
       expect(results).toEqual(expectedPrices);
     });
 
-    it('throws an error if the provided locale is not supported', () => {
+    it.only('throws an error if the provided locale is not supported', () => {
       const menuItemNames = ['Currywurst & Pommes'];
       const unsupportedLocale = 'Dothraki';
       const expectedErrorMessage = `Locale ${unsupportedLocale} not supported!`;

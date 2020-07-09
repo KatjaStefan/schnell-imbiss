@@ -25,10 +25,13 @@ const localisePrice = (price, locale) => {
   console.log('price', price, 'locale', locale);
   if (locale === 'de') {
     price.toFixed(2).replace('.', ',') + ' €';
+  } else if (locale === 'en-GB') {
+    price = '€' + price.toFixed(2).replace(',', '.');
+    console.log(price);
+  } else {
+    
   }
-  if (locale === 'en-GB') {
-    price.toFixed(2).replace(',', '.') + ' €';
-  }
+
 
   return price;
 };
