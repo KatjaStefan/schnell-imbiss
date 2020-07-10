@@ -85,7 +85,8 @@ const getMenuItemPrices = (menuItemNames, locale) => {
  */
 const getPizzaToppings = (varietyName) => {
   const variety = menu.pizza.varieties.filter((candidate) => candidate.name === varietyName)[0];
-
+  console.log('variety', variety);
+  
   if (!variety) {
     throw new Error(`The menu has no pizza variety named ${varietyName}`);
   }

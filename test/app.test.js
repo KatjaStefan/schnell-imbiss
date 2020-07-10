@@ -50,6 +50,23 @@ describe('App', () => {
      * Oh no! We have missing test coverage! We better write some tests before we deploy any bugs to production!!!
      * Expected behaviour: getPizzaToppings(NAME_OF_VARIETY) should return an array of this pizza variety's toppings.
      */
+    it.only('returns a variety of pizza toppings for a specific pizza', () => {
+      const varietyName =  'Margherita Deluxe';
+      // const expectedErrorMessage = `The menu has no pizza variety named ${varietyName}`;
+      const expectedToppings = ['Gouda', 'Tomatenscheiben', 'Mozzarella', 'Basilikumpesto'];
+      const results = getPizzaToppings(varietyName);
+      expect(results).toEqual(expectedToppings);
+
+    });
+
+    it.only('throws an error if the provided pizza variety is not on the menu', () => {
+      const unsupportedVariety = 'Patatina';
+      const expectedErrorMessage = `The menu has no pizza variety named ${unsupportedVariety}`;
+
+      expect(() => {
+        getPizzaToppings(unsupportedVariety)
+      }).toThrow(expectedErrorMessage);
+    });
   });
 
   describe('placeOrder', () => {
