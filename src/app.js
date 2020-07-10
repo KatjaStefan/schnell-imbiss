@@ -22,14 +22,11 @@ const localisePrice = (price, locale) => {
    * Implement me!
    * Hint: .toFixed() might help...
    */
-  console.log('price', price, 'locale', locale);
-  if (locale === 'de') {
-    price = price.toFixed(2).replace('.', ',') + ' €';
-  } else if (locale === 'en-GB') {
-    price = '€' + price.toFixed(2);
-    // console.log(price);
-  } 
-  return price;
+  const priceToString = price.toFixed(2);
+  
+  return locale === 'de'? 
+    priceToString.replace('.', ',') + ' €' :
+    '€' + priceToString;
 };
 
 // "Public" functions
@@ -45,11 +42,7 @@ const getMenuItemNames = (limit = null) => {
   /*
    * Can you implement a limit here? I bet you can...
    */
-  if (limit === null) {
-    return allNames;
-  } else {
-    return allNames.slice(0, limit);
-  }
+  return limit === null? allNames : allNames.slice(0, limit); 
 };
 
 /**
@@ -66,11 +59,9 @@ const getMenuItemPrices = (menuItemNames, locale) => {
   }
   // Select all menu items that have the provided names
   const items = getItemsForNames(menuItemNames);
-  // console.log('items:', items);
-  // Get the prices from each of the items
   
+  // Get the prices from each of the items
   const prices = items.map(item => item.price);
-  // console.log('prices array: ', prices);
  
   // Format the prices into localised strings.
   const localisedPrices = prices.map((price) => (localisePrice(price, locale)));
@@ -85,7 +76,6 @@ const getMenuItemPrices = (menuItemNames, locale) => {
  */
 const getPizzaToppings = (varietyName) => {
   const variety = menu.pizza.varieties.filter((candidate) => candidate.name === varietyName)[0];
-  // console.log('variety', variety);
 
   if (!variety) {
     throw new Error(`The menu has no pizza variety named ${varietyName}`);

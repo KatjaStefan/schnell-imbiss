@@ -52,7 +52,6 @@ describe('App', () => {
      */
     it('returns a variety of pizza toppings for a specific pizza', () => {
       const varietyName =  'Margherita Deluxe';
-      // const expectedErrorMessage = `The menu has no pizza variety named ${varietyName}`;
       const expectedToppings = ['Gouda', 'Tomatenscheiben', 'Mozzarella', 'Basilikumpesto'];
       const results = getPizzaToppings(varietyName);
       expect(results).toEqual(expectedToppings);
@@ -78,7 +77,7 @@ describe('App', () => {
      * resolves with:
      * Thank you for dining with Schnell Imbiss! Here is your order of: 2 x Leckeres Eis 3 x Pizza. Your total is: 26,50 €.
      */
-    it('it returns a message with details about your order', () => {
+    it.only('it returns a message with details about your order', () => {
       const order = {'Leckeres Eis': 2, 'Pizza': 3};
       const locale = 'de';
       const results =  placeOrder(order, locale);
