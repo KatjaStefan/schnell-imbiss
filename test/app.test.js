@@ -50,7 +50,7 @@ describe('App', () => {
      * Oh no! We have missing test coverage! We better write some tests before we deploy any bugs to production!!!
      * Expected behaviour: getPizzaToppings(NAME_OF_VARIETY) should return an array of this pizza variety's toppings.
      */
-    it.only('returns a variety of pizza toppings for a specific pizza', () => {
+    it('returns a variety of pizza toppings for a specific pizza', () => {
       const varietyName =  'Margherita Deluxe';
       // const expectedErrorMessage = `The menu has no pizza variety named ${varietyName}`;
       const expectedToppings = ['Gouda', 'Tomatenscheiben', 'Mozzarella', 'Basilikumpesto'];
@@ -59,7 +59,7 @@ describe('App', () => {
 
     });
 
-    it.only('throws an error if the provided pizza variety is not on the menu', () => {
+    it('throws an error if the provided pizza variety is not on the menu', () => {
       const unsupportedVariety = 'Patatina';
       const expectedErrorMessage = `The menu has no pizza variety named ${unsupportedVariety}`;
 
@@ -78,5 +78,11 @@ describe('App', () => {
      * resolves with:
      * Thank you for dining with Schnell Imbiss! Here is your order of: 2 x Leckeres Eis 3 x Pizza. Your total is: 26,50 €.
      */
+    it('it returns a message with details about your order', () => {
+      const order = {'Leckeres Eis': 2, 'Pizza': 3};
+      const locale = 'de';
+      const results =  placeOrder(order, locale);
+      expect(results).resolves.toThrow('Thank you for dining with Schnell Imbiss! Here is your order of: 2 x Leckeres Eis 3 x Pizza. Your total is: 26,50 €');
+    });
   });
 });
